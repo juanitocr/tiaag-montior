@@ -1,17 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {Chart} from 'chart.js'
 
 @Component({
-  selector: 'app-display',
-  templateUrl: './display.page.html',
-  styleUrls: ['./display.page.scss'],
+  selector: 'app-card',
+  templateUrl: './card.page.html',
+  styleUrls: ['./card.page.scss'],
 })
-export class DisplayPage implements OnInit {
+export class CardPage implements OnInit {
   myChart: Chart;
   @ViewChild('chartContainer') chartcontainer: ElementRef;
   @ViewChild('chartcanvas') chartcanvas: ElementRef;
-
   ngAfterViewInit() {
 
     this.createChart();
@@ -42,9 +40,7 @@ export class DisplayPage implements OnInit {
     });
   }
 
-  constructor(public navCtrl: NavController) { 
-
-  }
+  constructor() { }
 
   ngOnInit() {
   }

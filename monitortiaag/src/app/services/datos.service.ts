@@ -6,14 +6,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class DatosService {
 
-
   constructor(private angularFireDatabase: AngularFireDatabase) {
   }
 
     getInfoSheepMonitor(id){
-    return this.angularFireDatabase.object('/');
-    
-    
-
+    return this.angularFireDatabase.object('/Monitor');
    }
+
+   
 }
