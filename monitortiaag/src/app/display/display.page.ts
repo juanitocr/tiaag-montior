@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import {Chart} from 'chart.js'
+import { Observable } from 'rxjs';
 
+import {Chart} from 'chart.js'
+import {MonitorService} from './../services/monitor.service';
 @Component({
   selector: 'app-display',
   templateUrl: './display.page.html',
@@ -11,9 +13,8 @@ export class DisplayPage implements OnInit {
   myChart: Chart;
   @ViewChild('chartContainer') chartcontainer: ElementRef;
   @ViewChild('chartcanvas') chartcanvas: ElementRef;
-
+  monitors: Observable<any[]>;
   ngAfterViewInit() {
-
     this.createChart();
 
   }
@@ -42,11 +43,11 @@ export class DisplayPage implements OnInit {
     });
   }
 
-  constructor(public navCtrl: NavController) { 
-
-  }
-
+  constructor(public navCtrl: NavController,public ms: MonitorService) {
+    this.ms.loadMonitor();
+    console.log(this.monitors);    
+   }
   ngOnInit() {
+        //console.log(this.todos);
   }
-
 }
