@@ -14,24 +14,24 @@
           <ion-card>
               <ion-card-header>
                 <ion-card-title>Configurar Pesos</ion-card-title>
-                <ion-card-subtitle>Separacion</ion-card-subtitle>
+                <ion-card-subtitle>Actual: {{val}} Kg</ion-card-subtitle>
               </ion-card-header>
           
               <ion-card-content>
                 <ion-item>
-                  <ion-range min="0" max="200" color="secondary">
+                  <ion-range [(ngModel)]="val" pin="true" value="50" (ionChange)="updatePro($event)" min="0" max="120" color="secondary">
                     <ion-label slot="start">0</ion-label>
-                    <ion-label slot="end">200</ion-label>
+                    <ion-label slot="end">120</ion-label>
                   </ion-range>
                 </ion-item>
-                <ion-button color="secondary">Guardar</ion-button>
+                <ion-button color="secondary" (click)="guardarPeso()">Guardar</ion-button>
               </ion-card-content>
             </ion-card>
       </ion-col>
       <ion-col>
         <ion-card>
           <ion-list>
-            <ion-radio-group>
+            <ion-radio-group [(ngModel)]="modo" >
               <ion-list-header>
                 <ion-label>Modo</ion-label>
               </ion-list-header>
@@ -47,7 +47,7 @@
               </ion-item>
             </ion-radio-group>
           </ion-list>
-          <ion-button color="secondary">Guardar</ion-button>
+          <ion-button color="secondary" (click)="guardarModo()">Guardar</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>

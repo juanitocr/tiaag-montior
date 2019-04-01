@@ -1,62 +1,69 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Ficha de Identificacion</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Ficha de Identificacion </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-<ion-grid>
-  <ion-row size="6" >
-    <ion-col text-center size="6">
-      <ion-card >
-        <h1>{{bs.borrega.arete}} </h1>
-        <h6>{{bs.borrega.peso_nacer}} Kg</h6><h2>{{bs.borrega.peso_actual}} Kg</h2>
-        <h3>{{bs.borrega.genero}}</h3>
-      </ion-card>
-    </ion-col>
-    <ion-col text-center size="6">
-      <ion-row>
-        <ion-col >
-          <h6>Fecha de Nacimiento:</h6>
-          <h4> <strong>{{bs.borrega.fecha_nac | date:'shortDate'}}</strong></h4>
-        </ion-col>
-        <ion-col >
-          <h6>Fecha de Salida:</h6>
-          <h4><strong>{{bs.borrega.fecha_salida | date:'shortDate'}}</strong></h4>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col >
+  <ion-grid>
+    <ion-row size="6">
+      <ion-col text-center size="6">
+        <ion-card>
+          <h5><strong>Arete: </strong>{{borrega.arete}} </h5>
+          <h5><strong>Peso al nacer: </strong>{{borrega.peso_nacer}} Kg</h5>
+          <h5><strong>Peso actual: </strong>{{borrega.peso_actual}} Kg</h5>
+          <h5><strong>Numero de partos: </strong>{{borrega.num_partos}} </h5>
+          <h5>{{borrega.genero}}</h5>
+        </ion-card>
+      </ion-col>
+      <ion-col text-center size="6">
+        <ion-card>
+          <ion-row>
+            <ion-col>
+              <h6>Fecha de Nacimiento:</h6>
+              <h5> <strong>{{borrega.fecha_nac | date:'shortDate'}}</strong></h5>
+            </ion-col>
+            <ion-col>
+              <h6>Fecha de Salida:</h6>
+              <h5><strong>{{borrega.fecha_salida | date:'shortDate'}}</strong></h5>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
               <h6>Fecha de Entrada:</h6>
-              <h4> <strong>{{bs.borrega.fecha_entrada | date:'shortDate'}}</strong></h4>
+              <h5> <strong>{{borrega.fecha_entrada | date:'shortDate'}}</strong></h5>
             </ion-col>
-            <ion-col >
+            <ion-col>
               <h6>Fecha de Baja:</h6>
-              <h4><strong>{{bs.borrega.fecha_baja | date:'shortDate'}}</strong></h4>
+              <h5><strong>{{ borrega.fecha_baja | date:'shortDate'}}</strong></h5>
             </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-  <ion-row >
-      <h6>Partos: <strong>2</strong></h6>       
-  </ion-row>  
-  <ion-row size="6">
-        <ion-col>  
-            <ion-list *ngFor="let item of bs.borrega.cria" >
-                <ion-list-header>
-                  <ion-label><strong> Partos&nbsp;&nbsp;&nbsp;&nbsp;Genero&nbsp;&nbsp;&nbsp;&nbsp;Nacimiento</strong></ion-label>
-                </ion-list-header>
-                <ion-item>{{item.parto}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.genero}}&nbsp;<img src="./../../assets/img/icons8_Happy_104px.png" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;{{item.fecha_nacimiento}}</ion-item>
-             
-              </ion-list>
-        </ion-col>
-
-    
-      <ion-col size="6">
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row >     
+      <ion-col >
         <div #chartContainer class='chart-container'>
-          <canvas  #chartcanvas id="myChart"></canvas>
+          <canvas #chartcanvas id="myChart"></canvas>
         </div>
       </ion-col>
-  </ion-row>
-</ion-grid>
+    </ion-row>
+    <ion-row>
+        <ion-col >
+            <ion-list *ngFor="let item of borrega.crias">
+              <ion-list-header>
+                <ion-label><strong> Partos&nbsp;&nbsp;&nbsp;&nbsp;Genero&nbsp;&nbsp;&nbsp;&nbsp;Nacimiento</strong>
+                </ion-label>
+              </ion-list-header>
+              <ion-item>{{item.parto}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.genero}}&nbsp;<img
+                  src="./../../assets/img/icons8_Happy_104px.png"
+                  width="5%">&nbsp;&nbsp;&nbsp;&nbsp;{{item.fecha_nacimiento}}</ion-item>
+    
+            </ion-list>
+          </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -10,9 +10,9 @@
 <ion-content>
     <ion-grid>
       <ion-row>
-      <ion-col size="8" *ngFor="let item of ms.monitors">
-        <ion-row><h2>Arete: {{item.arete}}</h2></ion-row>
-        <ion-row><h1>Peso: {{item.peso}} Kg</h1></ion-row>
+      <ion-col size="8" >
+        <ion-row><h2>Arete: {{ms.getMonitor().arete}}</h2></ion-row>
+        <ion-row><h1>Peso: {{ms.getMonitor().peso}} Kg</h1></ion-row>
       </ion-col>
       <ion-col size="4">
       <ion-row><h1>Alerta</h1></ion-row>
@@ -31,22 +31,10 @@
         </ion-col>
         <ion-col size="4">
           <!-- List of Text Items -->
-<ion-list>
+<ion-list *ngFor="let borr of bs.registros5Array">
     <ion-item>
       <img src="./../../assets/img/icons8_Lamb_104px.png" width="10%">
-      <ion-label>&nbsp;&nbsp;3399 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>42 kg</strong></ion-label>
-    </ion-item>
-    <ion-item>
-      <img src="./../../assets/img/icons8_Lamb_104px.png" width="10%">
-      <ion-label>&nbsp;&nbsp;4599 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>46 kg</strong></ion-label>
-    </ion-item>
-    <ion-item>
-      <img src="./../../assets/img/icons8_Lamb_104px.png" width="10%">
-      <ion-label>&nbsp;&nbsp;7699 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>45 kg</strong></ion-label>
-    </ion-item>
-    <ion-item>
-      <img src="./../../assets/img/icons8_Lamb_104px.png" width="10%">
-      <ion-label>&nbsp;&nbsp;6548 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>65 kg</strong></ion-label>
+      <ion-label>&nbsp;&nbsp;{{borr.arete}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{borr.peso}} kg</strong></ion-label>
     </ion-item>
   </ion-list>
         </ion-col> 

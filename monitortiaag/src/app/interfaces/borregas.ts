@@ -1,4 +1,7 @@
+import { Crias } from "./crias";
+
 export interface Borregas{
+    id?:string;
     arete:number;
     fecha_baja:number;
     fecha_entrada:number;
@@ -10,5 +13,5 @@ export interface Borregas{
     peso_actual: number;
     rfid:string;
     genero: string;
-    crias: any[];
+    crias: Crias[];
 }

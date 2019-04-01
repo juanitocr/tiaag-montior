@@ -1,30 +1,29 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Datos</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-<ion-row>
-  <ion-col>
-      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-      <ion-list #slidingList>
-        <ion-item-sliding *ngFor="let item of bs.borregascoll">
-        <ion-item >
-          {{ item.arete }}
-        </ion-item>
-        <ion-item-options side="end">
-       <ion-item-option color="secondary">
-          View
-       </ion-item-option>
-       </ion-item-options>
-      </ion-item-sliding>
-      </ion-list>
-  </ion-col>  
-</ion-row>
-<ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-searchbar animated type="search" [formControl]="searchControl" (ionInput)="onSearchInput()" placeholder="Busca la borrega"
+        [(ngModel)]="searchTerm"></ion-searchbar>
+      <ion-list >
+        <ion-item-sliding *ngFor="let item of bs.borregasArray ">
+          <div *ngIf="searching" class="spinner-container">
+            <ion-spinner></ion-spinner>
+          </div>
 
-</ion-row>
+          <ion-item lines="inset" button [routerLink]="['/card',item.id]"><img src="./../../assets/img/icons8_Lamb_104px.png" width="8%">
+            <ion-label><b> Arete: </b>{{item.arete+" "}}<b>Peso: </b> {{" "+item.peso_actual}} </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+  </ion-row>
 </ion-content>

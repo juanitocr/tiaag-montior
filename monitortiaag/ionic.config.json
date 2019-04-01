@@ -1,5 +1,7 @@
 {
   "name": "monitortiaag",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

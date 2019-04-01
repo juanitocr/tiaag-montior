@@ -14,29 +14,28 @@
     <ion-row>
       <ion-col text-center>
         <h1>Total de Animales</h1>
-        <h1>670</h1>
+        <h1>{{borregas.length}}</h1>
       </ion-col>
       <ion-col text-center> 
         <h1>Coorderos</h1>
-        <h1>430</h1>
+        <h1>{{corderos}}</h1>
       </ion-col>
       <ion-col text-center>
         <h1>Aumento en masa</h1>
-        <h1>1700 Kg</h1>
+        <h1>{{pesoGanado}} Kg</h1>
 
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="8">
+      <ion-col>
           <div #chartContainer class='chart-container'>
               <canvas  #chartcanvas id="myChart1"></canvas>
           </div>
       </ion-col>
-      <ion-col size="4">
+      <ion-col >
           <div #chartContainer1 class='chart-container1'>
               <canvas  #chartcanvas1 id="myChart2"></canvas>
-          </div>
-        
+          </div>        
       </ion-col>
     </ion-row>
   </ion-grid>

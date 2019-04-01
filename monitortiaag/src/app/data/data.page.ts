@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import {IonItemSliding} from '@ionic/angular';
-import {Borregas} from '../interfaces/borregas'
-import { BorregasService } from '../services/borregas.service';
+import {Borregas} from './../interfaces/borregas'
+import { FormBuilder, FormGroup , Validators , FormControl } from '@angular/forms';
+import { BorregasService } from './../services/borregas.service';
 
 
 @Component({
@@ -11,27 +12,28 @@ import { BorregasService } from '../services/borregas.service';
   styleUrls: ['./data.page.scss'],
 })
 export class DataPage implements OnInit {
-searchQuery: string ='';
-items: Borregas[];
-
+  searchTerm: string = '';
+  items:Borregas[] = [];
+  item:Borregas;
+  searchControl: FormControl;
+  searching: any = false;
   constructor(public bs: BorregasService) {
-      bs.loadBorregasColle();
+    this.searchControl = new FormControl();
        console.log("Array",bs.borregacoll);
    }
-
-
-getItems(ev: any){
-
-const val = ev.target.value;
-if(val && val.trim() !=''){
-  this.bs.borregacoll =this.bs.borregacoll.filter((item)=>{
-    return (item);
-  })
-}
-}
-
-
+   ionViewDidLoad() {
+    this.setFilteredItems();
+    this.searchControl.valueChanges.subscribe(search => {
+    this.searching = false;
+    this.setFilteredItems();
+    });
+   }
   ngOnInit() {
   }
-
+  onSearchInput(){
+    this.searching = true;
+  }
+  setFilteredItems() {
+    this.items = this.bs.filterItems(this.searchTerm);
+   }
 }
